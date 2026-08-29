@@ -152,6 +152,10 @@ p {
   margin-top: 0;
 }
 
+p:not(.eyebrow) {
+  font-size: 17px;
+}
+
 h1,
 h2,
 h3 {
@@ -446,16 +450,19 @@ em {
 
 .service-list {
   display: grid;
-  gap: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .detailed-service {
   display: grid;
-  grid-template-columns: 56px 1fr 1fr 48px;
-  align-items: center;
-  gap: 22px;
-  padding: 34px 0;
-  border-bottom: 1px solid var(--line);
+  grid-template-columns: 42px 1fr 42px;
+  align-items: start;
+  gap: 18px;
+  min-height: 230px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: var(--surface);
 }
 
 .detailed-service > span {
@@ -464,21 +471,20 @@ em {
 }
 
 .detailed-service h2 {
-  margin: 0 0 8px;
+  margin: 0;
   font-size: 27px;
 }
 
-.detailed-service p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-}
-
 .detailed-service ul {
-  margin: 0;
+  grid-column: 2 / -1;
+  margin: 4px 0 0;
   padding-left: 18px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
+}
+
+.detailed-service .round-link {
+  justify-self: end;
 }
 
 .round-link {
@@ -535,9 +541,32 @@ em {
 
 .service-detail-image {
   width: 100%;
-  height: auto;
-  min-height: 390px;
-  object-fit: cover;
+  height: min(360px, 34vw);
+  min-height: 280px;
+  object-fit: contain;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+}
+
+.service-gallery-section {
+  padding-top: 0;
+}
+
+.service-gallery-section h2 {
+  margin: 12px 0 34px;
+}
+
+.service-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.service-gallery-image {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  background: var(--surface);
   border: 1px solid var(--line);
 }
 
@@ -588,8 +617,9 @@ em {
 .vehicle-card > img {
   display: block;
   width: 100%;
-  aspect-ratio: 1.45;
-  object-fit: cover;
+  aspect-ratio: 1.6;
+  object-fit: contain;
+  background: var(--surface-soft);
 }
 
 .vehicle-info {
@@ -607,7 +637,7 @@ em {
 
 .vehicle-info > span {
   color: var(--accent);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -734,7 +764,7 @@ em {
 .form-message {
   margin: 18px 0 0;
   color: var(--accent);
-  font-size: 13px;
+  font-size: 16px;
 }
 
 footer {
@@ -748,7 +778,7 @@ footer {
   justify-content: space-between;
   gap: 20px;
   color: #89949a;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .footer-bottom p {
@@ -844,6 +874,10 @@ footer {
     grid-column: 2 / -1;
   }
 
+  .service-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .cta-inner,
   .footer-bottom {
     align-items: flex-start;
@@ -858,7 +892,9 @@ footer {
 
   .hero-box,
   .form-grid,
-  .fleet-grid {
+  .fleet-grid,
+  .service-list,
+  .service-gallery {
     grid-template-columns: 1fr;
   }
 
@@ -869,6 +905,8 @@ footer {
   .detailed-service {
     grid-template-columns: 32px 1fr 38px;
     gap: 12px;
+    min-height: 0;
+    padding: 22px;
   }
 
   .detailed-service h2 {

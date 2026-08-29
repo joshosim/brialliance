@@ -55,10 +55,6 @@ export function ServiceList() {
           <span>{number}</span>
           <div>
             <h2>{title}</h2>
-            <p>
-              Tailored support delivered with discretion, thorough planning and
-              exceptional standards.
-            </p>
           </div>
           <ul>
             {points.map((point) => (

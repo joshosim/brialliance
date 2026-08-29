@@ -11,6 +11,11 @@ type Vehicle = {
   imageAlt: string;
 };
 
+type ServiceImage = {
+  image: string;
+  imageAlt: string;
+};
+
 type ServicePage = {
   title: string;
   description: string;
@@ -22,6 +27,7 @@ type ServicePage = {
   items: readonly string[];
   action: string;
   vehicles?: readonly Vehicle[];
+  gallery?: readonly ServiceImage[];
 };
 
 const servicePages: Record<string, ServicePage> = {
@@ -58,7 +64,7 @@ const servicePages: Record<string, ServicePage> = {
       {
         name: "Toyota Land Cruiser",
         description: "Armoured options available",
-        image: "/images/landcruiser.jpg",
+        image: "/images/landcruiser-display.jpg",
         imageAlt: "Toyota Land Cruiser SUV",
       },
       {
@@ -117,6 +123,20 @@ const servicePages: Record<string, ServicePage> = {
       "Emergency response planning",
     ],
     action: "Request security coverage",
+    gallery: [
+      {
+        image: "/images/event-security.jpg",
+        imageAlt: "Security personnel at an event",
+      },
+      {
+        image: "/images/vip-security.webp",
+        imageAlt: "VIP close-protection officers",
+      },
+      {
+        image: "/images/security-training.jpg",
+        imageAlt: "Security team crowd-control training",
+      },
+    ],
   },
   "armed-escort": {
     title: "Armed Escort Services",
@@ -136,6 +156,20 @@ const servicePages: Record<string, ServicePage> = {
       "Emergency tactical response",
     ],
     action: "Request armed escort",
+    gallery: [
+      {
+        image: "/images/Armed-Escort.webp",
+        imageAlt: "Armed escort team beside a security vehicle",
+      },
+      {
+        image: "/images/exsort.jfif",
+        imageAlt: "Security convoy on the road",
+      },
+      {
+        image: "/images/vip-security.webp",
+        imageAlt: "Close-protection officers on duty",
+      },
+    ],
   },
   "airport-support": {
     title: "Airport Protocol & Support",
@@ -225,6 +259,27 @@ export default async function ServiceDetailPage({
             />
           </div>
         </section>
+        {service.gallery && (
+          <section className="section service-gallery-section">
+            <div className="container">
+              <p className="eyebrow">Security in action</p>
+              <h2>Prepared for every movement.</h2>
+              <div className="service-gallery">
+                {service.gallery.map((galleryImage) => (
+                  <Image
+                    className="service-gallery-image"
+                    key={galleryImage.image}
+                    src={galleryImage.image}
+                    alt={galleryImage.imageAlt}
+                    width={900}
+                    height={600}
+                    sizes="(max-width: 650px) 100vw, (max-width: 950px) 50vw, 33vw"
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
         {service.vehicles && (
           <section className="section fleet-section">
             <div className="container">
