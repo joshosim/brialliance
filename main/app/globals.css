@@ -10,20 +10,36 @@
   --accent: #e6b84d;
   --accent-deep: #b9821e;
   --accent-wash: rgba(230, 184, 77, 0.1);
+  --accent-border: rgba(230, 184, 77, 0.55);
   --header: rgba(8, 17, 27, 0.9);
+  --hero-glow: rgba(230, 184, 77, 0.14);
+  --hero-end: #102638;
+  --button-text: #101812;
+  --footer-bg: #050c13;
+  --footer-text: #aab6bd;
+  --footer-line: rgba(255, 255, 255, 0.13);
+  --card-shadow: rgba(0, 0, 0, 0.16);
 }
 
 :root[data-theme="light"] {
-  --bg: #f5f3ed;
-  --surface: #ffffff;
-  --surface-soft: rgba(12, 24, 36, 0.045);
-  --text: #17232a;
-  --muted: #5c6970;
-  --line: rgba(12, 24, 36, 0.14);
-  --accent: #a96f13;
-  --accent-deep: #82500a;
-  --accent-wash: rgba(169, 111, 19, 0.09);
-  --header: rgba(245, 243, 237, 0.93);
+  --bg: #f7f4ee;
+  --surface: #fffdfa;
+  --surface-soft: #eee9df;
+  --text: #1a2831;
+  --muted: #53636b;
+  --line: #d8d1c5;
+  --accent: #8d5b09;
+  --accent-deep: #6f4407;
+  --accent-wash: #f4e7cb;
+  --accent-border: #bd8a34;
+  --header: rgba(255, 253, 250, 0.9);
+  --hero-glow: rgba(185, 126, 22, 0.18);
+  --hero-end: #e8e2d7;
+  --button-text: #fffdfa;
+  --footer-bg: #172630;
+  --footer-text: #d4dcdf;
+  --footer-line: rgba(255, 255, 255, 0.14);
+  --card-shadow: rgba(42, 36, 26, 0.1);
 }
 
 * {
@@ -226,9 +242,9 @@ em {
 .page-intro {
   background:
     radial-gradient(circle at 75% 25%,
-      rgba(230, 184, 77, 0.14),
+      var(--hero-glow),
       transparent 27%),
-    linear-gradient(135deg, var(--bg), #102638);
+    linear-gradient(135deg, var(--bg), var(--hero-end));
 }
 
 .page-section {
@@ -288,7 +304,12 @@ em {
 .btn-primary,
 .button-primary {
   background: var(--accent);
-  color: #101812;
+  color: var(--button-text);
+}
+
+.btn-primary:hover,
+.button-primary:hover {
+  background: var(--accent-deep);
 }
 
 .btn-secondary {
@@ -335,6 +356,11 @@ em {
   background: var(--accent-wash);
 }
 
+:root[data-theme="light"] .feature,
+:root[data-theme="light"] .stats-box > div {
+  box-shadow: 0 7px 18px var(--card-shadow);
+}
+
 .preview,
 .section {
   padding: 100px 0;
@@ -359,6 +385,13 @@ em {
   padding: 28px;
   border: 1px solid var(--line);
   background: var(--surface);
+}
+
+:root[data-theme="light"] .card,
+:root[data-theme="light"] .detailed-service,
+:root[data-theme="light"] .vehicle-card,
+:root[data-theme="light"] .booking-form {
+  box-shadow: 0 10px 26px var(--card-shadow);
 }
 
 .card h3 {
@@ -851,15 +884,15 @@ em {
 
 footer {
   padding: 38px 0;
-  border-top: 1px solid var(--line);
-  background: #050c13;
+  border-top: 1px solid var(--footer-line);
+  background: var(--footer-bg);
 }
 
 .footer-bottom {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  color: #89949a;
+  color: var(--footer-text);
   font-size: 15px;
 }
 
@@ -924,7 +957,7 @@ footer {
   }
 
   .vehicle-card:hover {
-    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 18px 35px var(--card-shadow);
   }
 
   .button,
@@ -954,7 +987,7 @@ footer {
   .booking-form input:hover,
   .booking-form select:hover,
   .booking-form textarea:hover {
-    border-color: rgba(230, 184, 77, 0.55);
+    border-color: var(--accent-border);
   }
 }
 
