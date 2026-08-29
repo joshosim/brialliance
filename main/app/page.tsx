@@ -3,6 +3,31 @@ import { BookingForm } from "./components/booking-form";
 import { ContactForm } from "./components/contact-form";
 import { ServiceList } from "./components/service-list";
 import { Footer, Header } from "./components/site-chrome";
+
+function ServiceIcon({ type }: { type: "car" | "shield" | "escort" | "plane" }) {
+  if (type === "shield") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 6v5c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6l8-3Z" /><path d="m8.5 12 2.2 2.2 4.8-4.8" /></svg>;
+  }
+
+  if (type === "plane") {
+    return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 16-9-4-9 4 9-13 9 13Z" /><path d="m12 12 3 7-3-1.5L9 19l3-7Z" /></svg>;
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      {type === "escort" && <path d="M4 5h8M3 9h5" />}
+      <path d="m5 16 1.7-6h10.6L19 16v3H5v-3Z" />
+      <path d="M7 10V7h10v3M5 16h14" />
+      <circle cx="8" cy="19" r="1.5" />
+      <circle cx="16" cy="19" r="1.5" />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return <svg className="check-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4.2 4.2L19 6.5" /></svg>;
+}
+
 export default function Home() {
   return (
     <>
@@ -30,10 +55,10 @@ export default function Home() {
               </div>
             </div>
             <div className="hero-box">
-              <div className="feature">🚘 Executive Car Rentals</div>
-              <div className="feature">🛡 Armed &amp; Event Security</div>
-              <div className="feature">🚔 Armed Escort Convoys</div>
-              <div className="feature">✈ VIP Airport Protocol</div>
+              <div className="feature"><ServiceIcon type="car" /><span>Executive Car Rentals</span></div>
+              <div className="feature"><ServiceIcon type="shield" /><span>Armed &amp; Event Security</span></div>
+              <div className="feature"><ServiceIcon type="escort" /><span>Armed Escort Convoys</span></div>
+              <div className="feature"><ServiceIcon type="plane" /><span>VIP Airport Protocol</span></div>
             </div>
           </div>
         </section>
@@ -63,10 +88,10 @@ export default function Home() {
             <div>
               <h2>Why Choose Brilliance Integrated?</h2>
               <ul className="why-list">
-                <li>✔ 24/7 Operations &amp; Support</li>
-                <li>✔ Highly Trained Security Personnel</li>
-                <li>✔ Modern &amp; Bulletproof Fleet</li>
-                <li>✔ Trusted by VIP &amp; Corporate Clients</li>
+                <li><CheckIcon />24/7 Operations &amp; Support</li>
+                <li><CheckIcon />Highly Trained Security Personnel</li>
+                <li><CheckIcon />Modern &amp; Bulletproof Fleet</li>
+                <li><CheckIcon />Trusted by VIP &amp; Corporate Clients</li>
               </ul>
             </div>
             <div className="stats-box">

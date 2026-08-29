@@ -22,7 +22,7 @@ export function Footer() {
   return (
     <footer>
       <div className="container footer-bottom">
-        <p>© 2024 Brilliance Integrated Services Ltd</p>
+        <p>© 2026 Brilliance Integrated Services Ltd</p>
         <p>We pride in your satisfaction!</p>
       </div>
     </footer>

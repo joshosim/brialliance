@@ -77,7 +77,7 @@ header {
   backdrop-filter: blur(18px);
 }
 
-header > nav.container {
+header>nav.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -125,9 +125,41 @@ header > nav.container {
 }
 
 .theme-toggle {
-  padding: 7px 12px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 8px;
   border-radius: 999px;
-  font-size: 12px;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-wash);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.theme-toggle .moon-icon,
+:root[data-theme="light"] .theme-toggle .sun-icon {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-toggle .moon-icon {
+  display: block;
 }
 
 .menu-toggle {
@@ -193,11 +225,9 @@ em {
 .hero,
 .page-intro {
   background:
-    radial-gradient(
-      circle at 75% 25%,
+    radial-gradient(circle at 75% 25%,
       rgba(230, 184, 77, 0.14),
-      transparent 27%
-    ),
+      transparent 27%),
     linear-gradient(135deg, var(--bg), #102638);
 }
 
@@ -220,7 +250,7 @@ em {
 }
 
 .hero p,
-.page-intro > .container > p:last-child {
+.page-intro>.container>p:last-child {
   max-width: 590px;
   color: var(--muted);
   font-size: 18px;
@@ -279,12 +309,25 @@ em {
 .feature {
   min-height: 116px;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   padding: 18px;
   border: 1px solid var(--line);
   background: var(--surface-soft);
   color: var(--text);
   font-weight: 600;
+  font-size: 14px;
+}
+
+.feature svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
 }
 
 .feature:hover {
@@ -355,8 +398,22 @@ em {
 }
 
 .why-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 13px 0;
   border-bottom: 1px solid var(--line);
+}
+
+.check-icon {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.4;
 }
 
 .stats-box {
@@ -365,7 +422,7 @@ em {
   gap: 12px;
 }
 
-.stats-box > div {
+.stats-box>div {
   padding: 26px 16px;
   border: 1px solid var(--line);
   text-align: center;
@@ -410,8 +467,8 @@ em {
   margin-top: 12px;
 }
 
-.editorial > div:last-child p,
-.form-layout aside > p:last-of-type {
+.editorial>div:last-child p,
+.form-layout aside>p:last-of-type {
   color: var(--muted);
 }
 
@@ -460,12 +517,13 @@ em {
   align-items: start;
   gap: 18px;
   min-height: 230px;
-  padding: 28px;
+  padding: 28px 28px 82px;
+  position: relative;
   border: 1px solid var(--line);
   background: var(--surface);
 }
 
-.detailed-service > span {
+.detailed-service>span {
   color: var(--accent);
   font-size: 13px;
 }
@@ -484,17 +542,41 @@ em {
 }
 
 .detailed-service .round-link {
-  justify-self: end;
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
 }
 
 .round-link {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
   border: 1px solid var(--line);
   color: var(--accent);
   border-radius: 50%;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.round-link:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+  transform: translateX(3px);
+}
+
+.round-link svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
 }
 
 .cta {
@@ -588,7 +670,7 @@ em {
   margin: 12px 0 0;
 }
 
-.fleet-heading > p {
+.fleet-heading>p {
   max-width: 390px;
   margin: 0;
   color: var(--muted);
@@ -614,7 +696,7 @@ em {
   border-color: var(--accent);
 }
 
-.vehicle-card > img {
+.vehicle-card>img {
   display: block;
   width: 100%;
   aspect-ratio: 1.6;
@@ -635,7 +717,7 @@ em {
   color: var(--muted);
 }
 
-.vehicle-info > span {
+.vehicle-info>span {
   color: var(--accent);
   font-size: 13px;
   font-weight: 700;
@@ -653,7 +735,7 @@ em {
   gap: 28px;
 }
 
-.contact-details > div {
+.contact-details>div {
   display: grid;
   gap: 4px;
 }
@@ -757,7 +839,7 @@ em {
   margin-top: 6px;
 }
 
-.booking-form > .button {
+.booking-form>.button {
   margin-top: 26px;
 }
 
@@ -785,12 +867,117 @@ footer {
   margin: 0;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  header {
+    animation: header-enter 0.55s ease-out both;
+  }
+
+  .hero-content {
+    animation: rise-in 0.7s 0.08s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-box {
+    animation: rise-in 0.75s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .motion-pending,
+  .motion-visible {
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--motion-delay, 0ms);
+  }
+
+  .motion-pending {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+
+  .motion-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .feature,
+  .detailed-service,
+  .vehicle-card,
+  .stats-box > div,
+  .values-grid > div {
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease,
+      background 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .feature:hover,
+  .detailed-service:hover,
+  .stats-box > div:hover,
+  .values-grid > div:hover {
+    transform: translateY(-5px);
+  }
+
+  .detailed-service:hover,
+  .stats-box > div:hover {
+    border-color: var(--accent);
+    background: var(--accent-wash);
+  }
+
+  .vehicle-card:hover {
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.16);
+  }
+
+  .button,
+  .btn,
+  .text-link,
+  .why-list li,
+  .booking-form input,
+  .booking-form select,
+  .booking-form textarea {
+    transition:
+      transform 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .text-link:hover {
+    transform: translateX(4px);
+  }
+
+  .why-list li:hover {
+    color: var(--text);
+    transform: translateX(5px);
+  }
+
+  .booking-form input:hover,
+  .booking-form select:hover,
+  .booking-form textarea:hover {
+    border-color: rgba(230, 184, 77, 0.55);
+  }
+}
+
+@keyframes header-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+}
+
 @media (max-width: 800px) {
   .container {
     width: min(100% - 32px, 620px);
   }
 
-  header > nav.container {
+  header>nav.container {
     min-height: 68px;
   }
 
@@ -906,7 +1093,12 @@ footer {
     grid-template-columns: 32px 1fr 38px;
     gap: 12px;
     min-height: 0;
-    padding: 22px;
+    padding: 22px 22px 74px;
+  }
+
+  .detailed-service .round-link {
+    right: 22px;
+    bottom: 22px;
   }
 
   .detailed-service h2 {
