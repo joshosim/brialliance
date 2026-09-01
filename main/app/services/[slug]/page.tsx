@@ -88,7 +88,7 @@ const servicePages: Record<string, ServicePage> = {
       {
         name: "Toyota Sienna",
         description: "Premium group and family movement",
-        image: "/images/Toyota Sienna.jfif",
+        image: "/images/Toyota Sienna.jpg",
         imageAlt: "Toyota Sienna minivan",
       },
       {
@@ -100,7 +100,7 @@ const servicePages: Record<string, ServicePage> = {
       {
         name: "Toyota Hiace Bus",
         description: "Flexible group and corporate trips",
-        image: "/images/Toyota Hiace Bus.jfif",
+        image: "/images/Toyota Hiace Bus.jpg",
         imageAlt: "Toyota Hiace bus",
       },
     ],
@@ -162,7 +162,7 @@ const servicePages: Record<string, ServicePage> = {
         imageAlt: "Armed escort team beside a security vehicle",
       },
       {
-        image: "/images/exsort.jfif",
+        image: "/images/exsort.jpg",
         imageAlt: "Security convoy on the road",
       },
       {
