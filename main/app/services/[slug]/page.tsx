@@ -86,12 +86,6 @@ const servicePages: Record<string, ServicePage> = {
         imageAlt: "Toyota Camry executive saloon",
       },
       {
-        name: "Toyota Sienna",
-        description: "Premium group and family movement",
-        image: "/images/Toyota Sienna.jpg",
-        imageAlt: "Toyota Sienna minivan",
-      },
-      {
         name: "Coaster Bus",
         description: "Comfortable corporate group transport",
         image: "/images/Coaster bus.jpg",
