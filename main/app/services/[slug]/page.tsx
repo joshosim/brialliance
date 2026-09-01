@@ -39,7 +39,7 @@ const servicePages: Record<string, ServicePage> = {
       "Premium vehicles with professional chauffeurs for secure and comfortable movement.",
     heading: "Our executive fleet",
     text: "Choose from a carefully maintained fleet for VIP movement, corporate travel and group transport.",
-    image: "/images/prado.jpg",
+    image: "/images/cruser.jpg",
     imageAlt: "Toyota Prado luxury SUV",
     items: [
       "Luxury SUVs and saloon cars",
@@ -124,16 +124,16 @@ const servicePages: Record<string, ServicePage> = {
     ],
     action: "Request security coverage",
     gallery: [
+      // {
+      //   image: "/images/event-security.jpg",
+      //   imageAlt: "Security personnel at an event",
+      // },
+      // {
+      //   image: "/images/vip-security.webp",
+      //   imageAlt: "VIP close-protection officers",
+      // },
       {
-        image: "/images/event-security.jpg",
-        imageAlt: "Security personnel at an event",
-      },
-      {
-        image: "/images/vip-security.webp",
-        imageAlt: "VIP close-protection officers",
-      },
-      {
-        image: "/images/security-training.JPG",
+        image: "/images/security-training.jpg",
         imageAlt: "Security team crowd-control training",
       },
     ],
@@ -157,10 +157,10 @@ const servicePages: Record<string, ServicePage> = {
     ],
     action: "Request armed escort",
     gallery: [
-      {
-        image: "/images/Armed-Escort.webp",
-        imageAlt: "Armed escort team beside a security vehicle",
-      },
+      // {
+      //   image: "/images/Armed-Escort.webp",
+      //   imageAlt: "Armed escort team beside a security vehicle",
+      // },
       {
         image: "/images/exsort.jpg",
         imageAlt: "Security convoy on the road",
@@ -254,7 +254,7 @@ export default async function ServiceDetailPage({
               alt={service.imageAlt}
               width={300}
               height={250}
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "contain" }}
             />
           </div>
         </section>
