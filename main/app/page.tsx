@@ -196,7 +196,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="section">
+          {/* <div className="section">
             <div className="container form-layout">
               <aside>
                 <p className="eyebrow">A thoughtful response</p>
@@ -215,7 +215,7 @@ export default function Home() {
               </aside>
               <BookingForm />
             </div>
-          </div>
+          </div> */}
         </section>
         <section id="contact" className="page-section">
           <div className="page-intro short">

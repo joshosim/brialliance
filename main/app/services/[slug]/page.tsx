@@ -64,7 +64,7 @@ const servicePages: Record<string, ServicePage> = {
       {
         name: "Toyota Land Cruiser",
         description: "Armoured options available",
-        image: "/images/landcruiser-display.jpg",
+        image: "/images/landcruiser.jpg",
         imageAlt: "Toyota Land Cruiser SUV",
       },
       {
@@ -133,7 +133,7 @@ const servicePages: Record<string, ServicePage> = {
         imageAlt: "VIP close-protection officers",
       },
       {
-        image: "/images/security-training.jpg",
+        image: "/images/security-training.JPG",
         imageAlt: "Security team crowd-control training",
       },
     ],
@@ -252,10 +252,9 @@ export default async function ServiceDetailPage({
               className="service-detail-image"
               src={service.image}
               alt={service.imageAlt}
-              width={900}
-              height={600}
-              sizes="(max-width: 800px) 100vw, 50vw"
-              priority
+              width={300}
+              height={250}
+              style={{ objectFit: "cover" }}
             />
           </div>
         </section>
@@ -271,9 +270,9 @@ export default async function ServiceDetailPage({
                     key={galleryImage.image}
                     src={galleryImage.image}
                     alt={galleryImage.imageAlt}
-                    width={900}
-                    height={600}
-                    sizes="(max-width: 650px) 100vw, (max-width: 950px) 50vw, 33vw"
+                    width={300}
+                    height={250}
+                    style={{ objectFit: "cover" }}
                   />
                 ))}
               </div>
@@ -299,15 +298,15 @@ export default async function ServiceDetailPage({
                     <Image
                       src={vehicle.image}
                       alt={vehicle.imageAlt}
-                      width={720}
-                      height={500}
-                      sizes="(max-width: 650px) 100vw, (max-width: 950px) 50vw, 33vw"
+                      width={300}
+                      height={250}
+                      style={{ objectFit: "cover" }}
                     />
                     <div className="vehicle-info">
                       <h3>{vehicle.name}</h3>
                       <p>{vehicle.description}</p>
                       <span>Available on request</span>
-                      <Link className="text-link" href="/#booking">
+                      <Link className="text-link" href="https://wa.me/2348123596345" target="_blank" rel="noreferrer" >
                         Book this vehicle <span>→</span>
                       </Link>
                     </div>
@@ -324,7 +323,7 @@ export default async function ServiceDetailPage({
               <br />
               <em>for your next movement?</em>
             </h2>
-            <Link className="button button-primary" href="/#booking">
+            <Link className="button button-primary" href="https://wa.me/2348123596345" target="_blank" rel="noreferrer">
               Request a booking <span>→</span>
             </Link>
           </div>
