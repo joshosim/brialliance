@@ -1,6 +1,9 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { buildMailto, openMailClient } from "../lib/mailto";
+import { contact } from "../lib/site";
+import { ArrowRight } from "./icons";
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
@@ -8,21 +11,21 @@ export function ContactForm() {
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const subject = encodeURIComponent(
-      "Website Enquiry — Brilliance Integrated Services",
-    );
-    const body = encodeURIComponent(
-      `Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`,
-    );
 
-    window.location.href = `mailto:brillianceintegrated37@gmail.com?subject=${subject}&body=${body}`;
+    openMailClient(
+      buildMailto({
+        to: contact.email,
+        subject: "Website Enquiry — Brilliance Integrated Services",
+        body: `Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`,
+      }),
+    );
     setSent(true);
   }
 
   return (
     <form className="booking-form" onSubmit={submit}>
       <p className="eyebrow">Send an enquiry</p>
-      <h2>How can we help?</h2>
+      <h3>How can we help?</h3>
       <div className="form-grid">
         <label>
           Your name
@@ -48,10 +51,10 @@ export function ContactForm() {
         </label>
       </div>
       <button className="button button-primary">
-        Send message <span>→</span>
+        Send message <ArrowRight aria-hidden="true" />
       </button>
       {sent && (
-        <p className="form-message">
+        <p className="form-message" role="status">
           Your email client is opening with your message.
         </p>
       )}

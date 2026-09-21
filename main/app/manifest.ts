@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Executive transport, security, VIP escort, and airport protocol services across Nigeria.",
     start_url: "/",
     display: "standalone",
-    background_color: "#08111b",
-    theme_color: "#08111b",
+    background_color: "#ffffff",
+    theme_color: "#d32029",
     icons: [
       {
         src: "/favicon.ico",
@@ -24,4 +24,3 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
   };
 }
-

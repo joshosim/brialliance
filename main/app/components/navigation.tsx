@@ -1,70 +1,79 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+
 import { useEffect, useState } from "react";
-const links = [
-  ["/", "Home"],
-  ["/#services", "Services"],
-  ["/#about", "About"],
-  ["/#booking", "Booking"],
-  ["/#contact", "Contact"],
-] as const;
+import { navLinks } from "../lib/nav";
+import { Menu, X } from "./icons";
 
+/**
+ * In-page anchors only. There is no second page to navigate to, so every link
+ * targets a section id on `/`. Plain `<a>` elements are used deliberately: the
+ * same href scrolls smoothly when you are already home and navigates home first
+ * when you are not (the header also renders on the 404 page).
+ */
 export function Navigation() {
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string>("home");
 
+  // Scroll-spy: highlight the section currently filling the viewport.
   useEffect(() => {
-    document.documentElement.dataset.theme =
-      localStorage.getItem("brilliance-theme") === "light" ? "light" : "dark";
+    const sections = navLinks
+      .map(({ id }) => document.getElementById(id))
+      .filter((element): element is HTMLElement => element !== null);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const mostVisible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (mostVisible) setActive(mostVisible.target.id);
+      },
+      { rootMargin: "-25% 0px -55% 0px", threshold: [0, 0.2, 0.5, 1] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
-  function toggleTheme() {
-    const next =
-      document.documentElement.dataset.theme !== "light" ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem("brilliance-theme", next);
-  }
+  // Escape closes the mobile menu.
+  useEffect(() => {
+    if (!open) return;
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false);
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   return (
     <div className="nav-controls">
       <nav
+        id="primary-navigation"
         className={open ? "nav-links is-open" : "nav-links"}
         aria-label="Main navigation"
       >
-        {links.map(([href, label]) => (
-          <Link
+        {navLinks.map(({ href, label, id }) => (
+          <a
             key={href}
             href={href}
-            className={pathname === href ? "active" : ""}
+            className={active === id ? "active" : undefined}
+            aria-current={active === id ? "true" : undefined}
             onClick={() => setOpen(false)}
           >
             {label}
-          </Link>
+          </a>
         ))}
       </nav>
       <button
-        className="theme-toggle"
-        onClick={toggleTheme}
-        aria-label="Toggle colour theme"
-        title="Toggle colour theme"
-      >
-        <svg className="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-        </svg>
-        <svg className="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
-        </svg>
-      </button>
-      <button
+        type="button"
         className={open ? "menu-toggle active" : "menu-toggle"}
-        onClick={() => setOpen(!open)}
+        onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
-        aria-label="Toggle menu"
+        aria-controls="primary-navigation"
+        aria-label={open ? "Close menu" : "Open menu"}
       >
-        <i />
-        <i />
+        {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
       </button>
     </div>
   );

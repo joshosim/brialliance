@@ -1,5 +1,9 @@
 "use client";
 import { FormEvent, useState } from "react";
+import { buildMailto, openMailClient } from "../lib/mailto";
+import { contact } from "../lib/site";
+import { ArrowRight } from "./icons";
+
 const options: Record<string, string[]> = {
   rental: [
     "Toyota Prado",
@@ -22,26 +26,39 @@ const options: Record<string, string[]> = {
     "Visa-on-Arrival Support",
   ],
 };
+
+const labels: Record<string, string> = {
+  rental: "Executive car rental",
+  escort: "Armed escort",
+  security: "Event security",
+  airport: "Airport protocol",
+};
+
 export function BookingForm() {
   const [selected, setSelected] = useState<string[]>([]);
   const [sent, setSent] = useState(false);
+
   function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const serviceList = selected
       .map((s) => `${s}: ${data.get(`item-${s}`) || "Not specified"}`)
       .join("\n");
-    const subject = encodeURIComponent(
-      "New Booking Request — Brilliance Integrated Services",
+
+    openMailClient(
+      buildMailto({
+        to: contact.email,
+        subject: "New Booking Request — Brilliance Integrated Services",
+        body: `BOOKING REQUEST\n\nFull Name: ${data.get("name")}\nEmail: ${data.get("email")}\nPhone: ${data.get("phone")}\nMovement date: ${data.get("date")}\nPickup location: ${data.get("location")}\n\nServices:\n${serviceList}\n\nDetails:\n${data.get("details")}`,
+      }),
     );
-    const body = encodeURIComponent(
-      `BOOKING REQUEST\n\nFull Name: ${data.get("name")}\nEmail: ${data.get("email")}\nPhone: ${data.get("phone")}\nMovement date: ${data.get("date")}\nPickup location: ${data.get("location")}\n\nServices:\n${serviceList}\n\nDetails:\n${data.get("details")}`,
-    );
-    window.location.href = `mailto:brillianceintegrated37@gmail.com?subject=${subject}&body=${body}`;
     setSent(true);
   }
+
   return (
     <form className="booking-form" onSubmit={submit}>
+      <p className="eyebrow">Plan your movement</p>
+      <h3>Start a booking</h3>
       <div className="form-grid">
         <label>
           Full name
@@ -86,16 +103,14 @@ export function BookingForm() {
                       )
                     }
                   />
-                  {key === "rental"
-                    ? "Executive car rental"
-                    : key === "airport"
-                      ? "Airport protocol"
-                      : key === "escort"
-                        ? "Armed escort"
-                        : "Event security"}
+                  {labels[key]}
                 </label>
                 {selected.includes(key) && (
-                  <select name={`item-${key}`} defaultValue="">
+                  <select
+                    name={`item-${key}`}
+                    defaultValue=""
+                    aria-label={`${labels[key]} option`}
+                  >
                     <option value="">Select service option</option>
                     {values.map((v) => (
                       <option key={v}>{v}</option>
@@ -120,10 +135,10 @@ export function BookingForm() {
         </label>
       </div>
       <button className="button button-primary" type="submit">
-        Submit booking request <span>→</span>
+        Submit booking request <ArrowRight aria-hidden="true" />
       </button>
       {sent && (
-        <p className="form-message">
+        <p className="form-message" role="status">
           Your email client is opening with your booking request.
         </p>
       )}
