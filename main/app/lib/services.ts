@@ -80,10 +80,7 @@ export const services: readonly Service[] = [
     },
     action: "Request security coverage",
     gallery: [
-      {
-        src: "/images/security-training.jpg",
-        alt: "Security team crowd-control training",
-      },
+
     ],
   },
   {
@@ -166,12 +163,7 @@ export const fleet: readonly Vehicle[] = [
     src: "/images/landcruiser.jpg",
     alt: "Toyota Land Cruiser SUV",
   },
-  {
-    name: "Land Cruiser Display",
-    description: "Showroom-ready executive trim",
-    src: "/images/landcruiser-display.jpg",
-    alt: "Toyota Land Cruiser on display",
-  },
+
   {
     name: "Toyota Hilux",
     description: "Reliable VIP and field movement",
@@ -218,7 +210,6 @@ export const galleryImages: readonly Image[] = [
   { src: "/images/landcruser.webp", alt: "Armoured Land Cruiser in service" },
   { src: "/images/Event.jpg", alt: "Guests arriving at a secured event" },
   { src: "/images/event-security.jpg", alt: "Event security team on duty" },
-  { src: "/images/security-training.jpg", alt: "Crowd-control training drill" },
   { src: "/images/vip-security.webp", alt: "VIP close-protection officers" },
   { src: "/images/Armed-Escort.webp", alt: "Armed escort convoy" },
   { src: "/images/exsort.jpg", alt: "Escort vehicle on the highway" },
@@ -226,7 +217,6 @@ export const galleryImages: readonly Image[] = [
   { src: "/images/cruser.jpg", alt: "Toyota Prado luxury SUV" },
   { src: "/images/prado.jpg", alt: "Toyota Prado exterior" },
   { src: "/images/landcruiser.jpg", alt: "Toyota Land Cruiser SUV" },
-  { src: "/images/landcruiser-display.jpg", alt: "Land Cruiser on display" },
   { src: "/images/Lexus_LXI.jpg", alt: "Lexus luxury SUV" },
   { src: "/images/hilux.jpg", alt: "Toyota Hilux pickup" },
   { src: "/images/GAC.jpg", alt: "GAC M8 Master executive vehicle" },
@@ -259,8 +249,8 @@ export const stats: readonly {
   readonly suffix: string;
   readonly label: string;
 }[] = [
-  { value: 24, suffix: "/7", label: "Availability" },
-  { value: 120, suffix: "+", label: "Vehicles & Personnel" },
-  { value: 36, suffix: "", label: "States Covered" },
-  { value: 15, suffix: "+", label: "Years of Service" },
-];
+    { value: 24, suffix: "/7", label: "Availability" },
+    { value: 120, suffix: "+", label: "Vehicles & Personnel" },
+    { value: 36, suffix: "", label: "States Covered" },
+    { value: 15, suffix: "+", label: "Years of Service" },
+  ];
