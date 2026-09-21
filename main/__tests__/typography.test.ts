@@ -22,7 +22,7 @@ describe("typography", () => {
   });
 
   it("scales headings fluidly rather than at fixed sizes", () => {
-    expect(globalsCss).toMatch(/h1\s*\{[^}]*font-size:\s*clamp\(/s);
-    expect(globalsCss).toMatch(/h2\s*\{[^}]*font-size:\s*clamp\(/s);
+    expect(globalsCss).toMatch(/h1\s*\{[^}]*font-size:\s*clamp\(/);
+    expect(globalsCss).toMatch(/h2\s*\{[^}]*font-size:\s*clamp\(/);
   });
 });

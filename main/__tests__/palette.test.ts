@@ -30,15 +30,15 @@ describe("one palette: red, white, black", () => {
   });
 
   it("paints a white page with black text", () => {
-    expect(globalsCss).toMatch(/body\s*\{[^}]*background:\s*var\(--white\)/s);
-    expect(globalsCss).toMatch(/body\s*\{[^}]*color:\s*var\(--black\)/s);
+    expect(globalsCss).toMatch(/body\s*\{[^}]*background:\s*var\(--white\)/);
+    expect(globalsCss).toMatch(/body\s*\{[^}]*color:\s*var\(--black\)/);
   });
 
   it("reserves red for accents and full-bleed bands", () => {
-    expect(globalsCss).toMatch(/\.eyebrow\s*\{[^}]*color:\s*var\(--red\)/s);
-    expect(globalsCss).toMatch(/em\s*\{[^}]*color:\s*var\(--red\)/s);
-    expect(globalsCss).toMatch(/\.red-band\s*\{[^}]*background:\s*var\(--red\)/s);
-    expect(globalsCss).toMatch(/footer\s*\{[^}]*background:\s*var\(--red-dark\)/s);
+    expect(globalsCss).toMatch(/\.eyebrow\s*\{[^}]*color:\s*var\(--red\)/);
+    expect(globalsCss).toMatch(/em\s*\{[^}]*color:\s*var\(--red\)/);
+    expect(globalsCss).toMatch(/\.red-band\s*\{[^}]*background:\s*var\(--red\)/);
+    expect(globalsCss).toMatch(/footer\s*\{[^}]*background:\s*var\(--red-dark\)/);
   });
 
   it("defines no alternate colour scheme", () => {

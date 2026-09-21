@@ -19,13 +19,13 @@ describe("responsive layout", () => {
   });
 
   it("keeps the container fluid instead of fixed-width", () => {
-    expect(globalsCss).toMatch(/\.container\s*\{[^}]*width:\s*min\(/s);
-    expect(globalsCss).not.toMatch(/\.container\s*\{[^}]*width:\s*\d+px/s);
+    expect(globalsCss).toMatch(/\.container\s*\{[^}]*width:\s*min\(/);
+    expect(globalsCss).not.toMatch(/\.container\s*\{[^}]*width:\s*\d+px/);
   });
 
   it("never lets a wide child create horizontal scroll", () => {
-    expect(globalsCss).toMatch(/body\s*\{[^}]*overflow-x:\s*hidden/s);
-    expect(globalsCss).toMatch(/img,\s*svg\s*\{[^}]*max-width:\s*100%/s);
+    expect(globalsCss).toMatch(/body\s*\{[^}]*overflow-x:\s*hidden/);
+    expect(globalsCss).toMatch(/img,\s*svg\s*\{[^}]*max-width:\s*100%/);
   });
 
   it("collapses every multi-column grid on a small phone", () => {
@@ -60,9 +60,9 @@ describe("responsive layout", () => {
 
   it("swaps the header for a burger on mobile", () => {
     const mobile = mediaBlock("800px");
-    expect(mobile).toMatch(/\.menu-toggle\s*\{[^}]*display:\s*grid/s);
+    expect(mobile).toMatch(/\.menu-toggle\s*\{[^}]*display:\s*grid/);
     expect(mobile).toMatch(/\.nav-links\s*\{/);
-    expect(globalsCss).toMatch(/\.menu-toggle\s*\{[^}]*display:\s*none/s);
+    expect(globalsCss).toMatch(/\.menu-toggle\s*\{[^}]*display:\s*none/);
   });
 
   it("drops to two columns on a tablet", () => {
@@ -72,7 +72,7 @@ describe("responsive layout", () => {
 
   it("lets anchored sections clear the sticky header", () => {
     expect(globalsCss).toMatch(
-      /\.page-section\s*\{[^}]*scroll-margin-top:\s*var\(--header-height\)/s,
+      /\.page-section\s*\{[^}]*scroll-margin-top:\s*var\(--header-height\)/,
     );
   });
 
