@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { navLinks } from "../lib/nav";
 import { Menu, X } from "./icons";
+import { ThemeToggle } from "./theme-toggle";
 
 /**
  * In-page anchors only. There is no second page to navigate to, so every link
@@ -65,6 +66,9 @@ export function Navigation() {
           </a>
         ))}
       </nav>
+      {/* Lives in .nav-controls because that is the part of the header still
+          visible once the links collapse behind the burger. */}
+      <ThemeToggle />
       <button
         type="button"
         className={open ? "menu-toggle active" : "menu-toggle"}

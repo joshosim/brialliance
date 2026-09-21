@@ -1,25 +1,73 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
 
 /*
- * One palette, permanently. There is no dark mode and no theme attribute to
- * switch on: red, white and black text for every visitor, whatever their
- * system preference. Nothing below reads a theme attribute.
+ * Two themes, one stylesheet. Every colour below is a role rather than a colour
+ * name: the light values sit on `:root` so they apply with JavaScript disabled,
+ * and dark mode redefines the same roles under `data-theme="dark"`. Nothing
+ * outside these blocks names a colour.
+ *
+ * `--accent` is a FOREGROUND — text, icons, borders, focus rings. `--accent-solid`
+ * is a BACKGROUND for filled elements that carry text on them. The two are the
+ * same green in light mode, which is why they are easy to conflate, but they must
+ * not be swapped in dark mode: there the accent is a light green that only works
+ * against a dark page, and white text on it would be unreadable.
  */
 :root {
-  --red: #d32029;
-  --red-deep: #a5151d;
-  --red-dark: #7d0f15;
-  --red-wash: #fdf4f4;
-  --red-soft: rgba(211, 32, 41, 0.08);
-  --red-border: rgba(211, 32, 41, 0.22);
-  --white: #ffffff;
-  --black: #000000;
-  --muted: #4b4b52;
-  --line: #ececec;
-  --card-shadow: rgba(0, 0, 0, 0.08);
-  --card-shadow-strong: rgba(0, 0, 0, 0.16);
+  /* Geometry, not colour — identical in both themes, so it lives outside them. */
   --header-height: 78px;
   --radius: 4px;
+}
+
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --page: #ffffff;
+  --surface: #ffffff;
+  --text: #000000;
+  --muted: #4b4b52;
+  --border: #ececec;
+
+  --accent: #0b7a3b;
+  --accent-solid: #0b7a3b;
+  --accent-deep: #095f2e;
+  --accent-dark: #063f1f;
+  --accent-wash: #f1f8f3;
+  --accent-soft: rgba(11, 122, 59, 0.08);
+  --accent-border: rgba(11, 122, 59, 0.22);
+  --accent-glow: rgba(11, 122, 59, 0.28);
+  --on-accent: #ffffff;
+
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --card-shadow-strong: rgba(0, 0, 0, 0.16);
+}
+
+/*
+ * Dark mode: a near-black page with a light green accent, so the accent reads as
+ * text, icons and hairlines against it. The solid greens stay dark enough to
+ * carry white text — the worst case is `--accent-solid`, at 5.35:1.
+ */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --page: #0b0f0c;
+  --surface: #10160f;
+  --text: #f2f5f2;
+  --muted: #a8b3aa;
+  --border: #1e2a20;
+
+  --accent: #34d07a;
+  --accent-solid: #1a7a49;
+  --accent-deep: #166b3f;
+  --accent-dark: #0e3a22;
+  --accent-wash: #12211a;
+  --accent-soft: rgba(52, 208, 122, 0.12);
+  --accent-border: rgba(52, 208, 122, 0.28);
+  --accent-glow: rgba(52, 208, 122, 0.22);
+  --on-accent: #ffffff;
+
+  --card-shadow: rgba(0, 0, 0, 0.5);
+  --card-shadow-strong: rgba(0, 0, 0, 0.6);
 }
 
 * {
@@ -35,8 +83,8 @@ body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden;
-  background: var(--white);
-  color: var(--black);
+  background: var(--page);
+  color: var(--text);
   font-family: "Work Sans", sans-serif;
   font-size: 16px;
   line-height: 1.65;
@@ -74,8 +122,8 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: var(--white);
-  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
   transition:
     box-shadow 0.3s ease,
     border-color 0.3s ease;
@@ -84,6 +132,15 @@ header {
 header.is-scrolled {
   border-bottom-color: transparent;
   box-shadow: 0 12px 34px var(--card-shadow);
+}
+
+/*
+ * On a near-black page a black drop shadow does no work, and dropping the border
+ * as well would leave the sticky header blending into the content behind it. Dark
+ * mode keeps the hairline and leans on it for the separation instead.
+ */
+:root[data-theme="dark"] header.is-scrolled {
+  border-bottom-color: var(--border);
 }
 
 header > nav.container {
@@ -98,7 +155,7 @@ header > nav.container {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: var(--black);
+  color: var(--text);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -109,7 +166,7 @@ header > nav.container {
   flex: 0 0 auto;
   width: 26px;
   height: 26px;
-  color: var(--red);
+  color: var(--accent);
   stroke-width: 2;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -146,7 +203,7 @@ header > nav.container {
   right: 0;
   bottom: 0;
   height: 2px;
-  background: var(--red);
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
@@ -154,7 +211,7 @@ header > nav.container {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--red);
+  color: var(--accent);
 }
 
 .nav-links a:hover::after,
@@ -168,10 +225,10 @@ header > nav.container {
   width: 40px;
   height: 40px;
   padding: 8px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--white);
-  color: var(--black);
+  background: var(--surface);
+  color: var(--text);
   transition:
     color 0.2s ease,
     border-color 0.2s ease,
@@ -185,9 +242,54 @@ header > nav.container {
 
 .menu-toggle:hover,
 .menu-toggle.active {
-  border-color: var(--red);
-  color: var(--red);
-  background: var(--red-wash);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-wash);
+}
+
+/*
+ * The theme toggle holds BOTH icons and lets CSS choose between them, so the
+ * correct one is on screen at first paint — before any JavaScript runs, and
+ * without React needing to know the theme while it renders, which is what would
+ * cause a hydration mismatch.
+ */
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.theme-toggle .theme-icon-moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .theme-icon-sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .theme-icon-moon {
+  display: block;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-wash);
 }
 
 /* --------------------------------------------------------------- typography */
@@ -202,7 +304,7 @@ p {
 h1,
 h2,
 h3 {
-  color: var(--black);
+  color: var(--text);
   line-height: 1.08;
   letter-spacing: -0.03em;
 }
@@ -228,17 +330,17 @@ p {
 }
 
 em {
-  color: var(--red);
+  color: var(--accent);
   font-style: normal;
 }
 
 .highlight {
-  color: var(--red);
+  color: var(--accent);
 }
 
 .eyebrow {
   margin-bottom: 14px;
-  color: var(--red);
+  color: var(--accent);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -288,9 +390,9 @@ em {
 
 .btn-primary,
 .button-primary {
-  background: var(--red);
-  color: var(--white);
-  box-shadow: 0 8px 20px var(--red-soft);
+  background: var(--accent-solid);
+  color: var(--on-accent);
+  box-shadow: 0 8px 20px var(--accent-soft);
 }
 
 /* The red fill sweeps in from the left on hover. */
@@ -300,7 +402,7 @@ em {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--red-deep);
+  background: var(--accent-deep);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -313,29 +415,35 @@ em {
 
 .btn-primary:hover,
 .button-primary:hover {
-  box-shadow: 0 14px 30px rgba(211, 32, 41, 0.28);
+  box-shadow: 0 14px 30px var(--accent-glow);
 }
 
 .btn-secondary {
-  border-color: var(--black);
-  color: var(--black);
-  background: var(--white);
+  border-color: var(--text);
+  color: var(--text);
+  background: var(--surface);
 }
 
 .btn-secondary:hover {
-  border-color: var(--red);
-  color: var(--red);
-  background: var(--red-wash);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-wash);
 }
 
+/*
+ * A light button that sits on the green bands. Its label is `--accent-deep`, not
+ * `--accent`: the dark theme's accent is a light green that would be 2.01:1 on
+ * white. On hover it becomes a dark green rather than `--text`, which in dark
+ * mode would be near-white — a white button turning whiter, i.e. no hover.
+ */
 .button-inverse {
-  background: var(--white);
-  color: var(--red);
+  background: var(--on-accent);
+  color: var(--accent-deep);
 }
 
 .button-inverse:hover {
-  background: var(--black);
-  color: var(--white);
+  background: var(--accent-dark);
+  color: var(--on-accent);
 }
 
 .text-link {
@@ -343,7 +451,7 @@ em {
   align-items: center;
   gap: 8px;
   margin-top: 16px;
-  color: var(--red);
+  color: var(--accent);
   font-weight: 700;
   transition: color 0.2s ease;
 }
@@ -355,7 +463,7 @@ em {
 }
 
 .text-link:hover {
-  color: var(--red-deep);
+  color: var(--accent-deep);
 }
 
 .text-link:hover svg {
@@ -375,7 +483,7 @@ em {
 .scroll-progress-bar {
   display: block;
   height: 100%;
-  background: var(--red);
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
 }
@@ -391,9 +499,9 @@ em {
   height: 46px;
   border: 0;
   border-radius: 50%;
-  background: var(--red);
-  color: var(--white);
-  box-shadow: 0 10px 26px rgba(211, 32, 41, 0.3);
+  background: var(--accent-solid);
+  color: var(--on-accent);
+  box-shadow: 0 10px 26px var(--accent-glow);
   opacity: 0;
   transform: translateY(14px);
   pointer-events: none;
@@ -410,7 +518,7 @@ em {
 }
 
 .back-to-top:hover {
-  background: var(--red-deep);
+  background: var(--accent-deep);
 }
 
 /* ------------------------------------------------------------------- hero */
@@ -419,18 +527,17 @@ em {
   position: relative;
   overflow: hidden;
   padding: 120px 0 110px;
-  background:
-    radial-gradient(circle at 78% 18%, var(--red-soft), transparent 36%),
-    var(--white);
-  border-bottom: 1px solid var(--line);
+  background: var(--page);
+  border-bottom: 1px solid var(--border);
 }
 
+/* A flat rule, like every other surface on the site. */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--red), var(--red-deep));
+  background: var(--accent-solid);
 }
 
 .hero-grid {
@@ -467,10 +574,10 @@ em {
   gap: 14px;
   min-height: 128px;
   padding: 20px 16px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--white);
-  color: var(--black);
+  background: var(--surface);
+  color: var(--text);
   font-size: 14px;
   font-weight: 600;
   text-align: center;
@@ -479,15 +586,15 @@ em {
 .feature-icon {
   width: 28px;
   height: 28px;
-  color: var(--red);
+  color: var(--accent);
   stroke-width: 1.7;
 }
 
 /* ------------------------------------------------------------- red band */
 
 .red-band {
-  background: var(--red);
-  color: var(--white);
+  background: var(--accent-solid);
+  color: var(--on-accent);
 }
 
 .marquee {
@@ -513,7 +620,7 @@ em {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: var(--white);
+  color: var(--on-accent);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -546,7 +653,7 @@ em {
 
 .stat strong {
   display: block;
-  color: var(--white);
+  color: var(--on-accent);
   font-size: clamp(30px, 4vw, 46px);
   line-height: 1.1;
   letter-spacing: -0.03em;
@@ -602,13 +709,13 @@ em {
   gap: 8px 16px;
   min-height: 250px;
   padding: 28px 28px 86px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--white);
+  background: var(--surface);
 }
 
 .service-number {
-  color: var(--red);
+  color: var(--accent);
   font-size: 13px;
   font-weight: 700;
 }
@@ -623,7 +730,7 @@ em {
   flex: 0 0 auto;
   width: 26px;
   height: 26px;
-  color: var(--red);
+  color: var(--accent);
   stroke-width: 1.7;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -657,7 +764,7 @@ em {
   width: 16px;
   height: 16px;
   margin-top: 4px;
-  color: var(--red);
+  color: var(--accent);
   stroke-width: 2.6;
 }
 
@@ -669,9 +776,9 @@ em {
   place-items: center;
   width: 46px;
   height: 46px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: 50%;
-  color: var(--red);
+  color: var(--accent);
   transition:
     color 0.25s ease,
     background 0.25s ease,
@@ -685,9 +792,9 @@ em {
 }
 
 .round-link:hover {
-  border-color: var(--red);
-  background: var(--red);
-  color: var(--white);
+  border-color: var(--accent);
+  background: var(--accent-solid);
+  color: var(--on-accent);
   transform: translateX(4px);
 }
 
@@ -698,7 +805,7 @@ em {
 }
 
 .service-detail.is-reversed {
-  background: var(--red-wash);
+  background: var(--accent-wash);
 }
 
 .service-detail-layout {
@@ -721,7 +828,7 @@ em {
 }
 
 .service-detail-intro {
-  color: var(--black);
+  color: var(--text);
   font-size: 18px;
   font-weight: 600;
 }
@@ -741,9 +848,9 @@ em {
 
 .service-detail-media {
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--white);
+  background: var(--surface);
 }
 
 .service-detail-media img {
@@ -770,7 +877,7 @@ em {
   width: 100%;
   height: 240px;
   object-fit: cover;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   transition:
     transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
@@ -779,14 +886,14 @@ em {
 
 .service-detail-gallery img:hover {
   transform: scale(1.03);
-  border-color: var(--red);
+  border-color: var(--accent);
 }
 
 /* ------------------------------------------------------------------ fleet */
 
 .fleet-section {
-  background: var(--red-wash);
-  border-block: 1px solid var(--line);
+  background: var(--accent-wash);
+  border-block: 1px solid var(--border);
 }
 
 .fleet-grid {
@@ -797,9 +904,9 @@ em {
 
 .fleet-card {
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--white);
+  background: var(--surface);
   transition:
     transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.3s ease,
@@ -811,12 +918,12 @@ em {
   width: 100%;
   aspect-ratio: 1.6;
   object-fit: cover;
-  background: var(--red-wash);
+  background: var(--accent-wash);
 }
 
 .fleet-info {
   padding: 22px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--border);
 }
 
 .fleet-info h3 {
@@ -846,9 +953,9 @@ em {
 .gallery-item {
   margin: 0;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--white);
+  background: var(--surface);
 }
 
 .gallery-item img {
@@ -861,7 +968,7 @@ em {
 
 .gallery-item figcaption {
   padding: 12px 16px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--border);
   color: var(--muted);
   font-size: 13px;
 }
@@ -871,13 +978,13 @@ em {
 }
 
 .gallery-item:hover {
-  border-color: var(--red-border);
+  border-color: var(--accent-border);
 }
 
 /* --------------------------------------------------------------- why / about */
 
 .why {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--border);
 }
 
 .why-grid {
@@ -903,7 +1010,7 @@ em {
   align-items: center;
   gap: 12px;
   padding: 14px 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--border);
   transition:
     color 0.2s ease,
     transform 0.25s ease;
@@ -913,23 +1020,23 @@ em {
   flex: 0 0 auto;
   width: 18px;
   height: 18px;
-  color: var(--red);
+  color: var(--accent);
   stroke-width: 2.4;
 }
 
 .assurance {
   padding: 34px;
-  border: 1px solid var(--red-border);
-  border-top: 4px solid var(--red);
+  border: 1px solid var(--accent-border);
+  border-top: 4px solid var(--accent);
   border-radius: var(--radius);
-  background: var(--red-wash);
+  background: var(--accent-wash);
 }
 
 .assurance-icon {
   width: 34px;
   height: 34px;
   margin-bottom: 16px;
-  color: var(--red);
+  color: var(--accent);
   stroke-width: 1.7;
 }
 
@@ -960,7 +1067,7 @@ em {
 }
 
 .values-grid b {
-  color: var(--red);
+  color: var(--accent);
   font-size: 12px;
   letter-spacing: 1px;
 }
@@ -995,9 +1102,9 @@ em {
 
 .booking-form {
   padding: 34px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--white);
+  background: var(--surface);
 }
 
 .booking-form h3 {
@@ -1029,12 +1136,12 @@ em {
 .booking-form select,
 .booking-form textarea {
   width: 100%;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 13px 14px;
   outline: none;
-  background: var(--white);
-  color: var(--black);
+  background: var(--surface);
+  color: var(--text);
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
@@ -1043,8 +1150,8 @@ em {
 .booking-form input:focus,
 .booking-form select:focus,
 .booking-form textarea:focus {
-  border-color: var(--red);
-  box-shadow: 0 0 0 3px var(--red-soft);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .booking-form textarea {
@@ -1066,14 +1173,14 @@ em {
   display: flex !important;
   align-items: center;
   gap: 9px;
-  color: var(--black) !important;
+  color: var(--text) !important;
   font-size: 14px !important;
   font-weight: 500 !important;
 }
 
 .check input {
   width: 16px;
-  accent-color: var(--red);
+  accent-color: var(--accent);
 }
 
 .service-checks select {
@@ -1086,7 +1193,7 @@ em {
 
 .form-message {
   margin: 18px 0 0;
-  color: var(--red);
+  color: var(--accent);
   font-size: 15px;
   font-weight: 600;
 }
@@ -1102,7 +1209,7 @@ em {
 }
 
 .contact-details span {
-  color: var(--red);
+  color: var(--accent);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -1129,19 +1236,19 @@ em {
   flex: 0 0 auto;
   width: 17px;
   height: 17px;
-  color: var(--red);
+  color: var(--accent);
 }
 
 .contact-details a:hover {
-  color: var(--red);
+  color: var(--accent);
 }
 
 /* -------------------------------------------------------------------- cta */
 
 .cta {
   padding: 84px 0;
-  background: var(--red);
-  color: var(--white);
+  background: var(--accent-solid);
+  color: var(--on-accent);
 }
 
 .cta-inner {
@@ -1153,12 +1260,12 @@ em {
 
 .cta h2 {
   margin: 0;
-  color: var(--white);
+  color: var(--on-accent);
   font-size: clamp(26px, 3.4vw, 40px);
 }
 
 .cta em {
-  color: var(--white);
+  color: var(--on-accent);
   opacity: 0.85;
 }
 
@@ -1166,8 +1273,8 @@ em {
 
 footer {
   padding: 64px 0 28px;
-  background: var(--red-dark);
-  color: var(--white);
+  background: var(--accent-dark);
+  color: var(--on-accent);
 }
 
 .footer-grid {
@@ -1214,7 +1321,7 @@ footer {
 
 .footer-links a:hover,
 .footer-contact a:hover {
-  color: var(--white);
+  color: var(--on-accent);
   transform: translateX(3px);
 }
 
@@ -1271,6 +1378,13 @@ footer {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  /* Ease the theme swap rather than cutting between the two palettes. */
+  body {
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
   header {
     animation: header-enter 0.55s ease-out both;
   }
@@ -1324,7 +1438,7 @@ footer {
   }
 
   .detailed-service:hover {
-    border-color: var(--red-border);
+    border-color: var(--accent-border);
     box-shadow: 0 16px 34px var(--card-shadow);
   }
 
@@ -1333,7 +1447,7 @@ footer {
   }
 
   .fleet-card:hover {
-    border-color: var(--red);
+    border-color: var(--accent);
     box-shadow: 0 18px 38px var(--card-shadow-strong);
   }
 
@@ -1342,7 +1456,7 @@ footer {
   }
 
   .why-list li:hover {
-    color: var(--black);
+    color: var(--text);
     transform: translateX(5px);
   }
 
@@ -1414,8 +1528,8 @@ footer {
     display: grid;
     gap: 0;
     padding: 8px 16px 16px;
-    border-bottom: 1px solid var(--line);
-    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
     box-shadow: 0 20px 34px var(--card-shadow);
     transform: translateY(-130%);
     opacity: 0;
@@ -1433,7 +1547,7 @@ footer {
 
   .nav-links a {
     padding: 14px 0;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--border);
   }
 
   .nav-links a::after {

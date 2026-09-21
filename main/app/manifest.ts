@@ -9,7 +9,9 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
-    theme_color: "#d32029",
+    // A web manifest carries one theme colour, not one per scheme, so this is the
+    // light accent — the value a visitor sees before any theme is applied.
+    theme_color: "#0b7a3b",
     icons: [
       {
         src: "/favicon.ico",

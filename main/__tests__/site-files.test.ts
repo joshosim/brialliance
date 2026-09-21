@@ -23,10 +23,10 @@ describe("sitemap", () => {
 });
 
 describe("manifest", () => {
-  it("ships a white and red identity", () => {
+  it("ships a white and green identity", () => {
     const value = manifest();
     expect(value.background_color).toBe("#ffffff");
-    expect(value.theme_color).toBe("#d32029");
+    expect(value.theme_color).toBe("#0b7a3b");
   });
 
   it("starts on the single page", () => {

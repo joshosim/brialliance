@@ -1,6 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
-  <rect width="36" height="36" fill="#ffffff"/>
-  <path d="M18 2L34 18L18 34L2 18Z" stroke="#d32029" stroke-width="1.6" fill="none"/>
-  <path d="M18 8L28 18L18 28L8 18Z" fill="#d32029"/>
-  <circle cx="18" cy="18" r="3" fill="#ffffff"/>
+  <!--
+    The mark follows the operating system's colour scheme, not the site's own
+    theme toggle: a favicon is a separate document and cannot read the page's
+    data-theme attribute. Class-based fills rather than custom properties, which
+    are the safer choice inside a standalone SVG document.
+  -->
+  <style>
+    .mark-bg { fill: #ffffff; }
+    .mark-ring { stroke: #0b7a3b; }
+    .mark-core { fill: #0b7a3b; }
+    @media (prefers-color-scheme: dark) {
+      .mark-bg { fill: #0b0f0c; }
+      .mark-ring { stroke: #34d07a; }
+      .mark-core { fill: #34d07a; }
+    }
+  </style>
+  <rect class="mark-bg" width="36" height="36" />
+  <path class="mark-ring" d="M18 2L34 18L18 34L2 18Z" stroke-width="1.6" fill="none" />
+  <path class="mark-core" d="M18 8L28 18L18 28L8 18Z" />
+  <circle class="mark-bg" cx="18" cy="18" r="3" />
 </svg>
