@@ -38,12 +38,12 @@ export const services: readonly Service[] = [
   {
     anchor: "car-rentals",
     number: "01",
-    title: "Executive Car Rentals",
+    title: "Journey Management / Executive Car Rentals",
     icon: "car",
     description:
-      "Luxury SUVs, bulletproof vehicles and professional chauffeurs for executive transport across Nigeria.",
+      "Luxury SUVs, bulletproof vehicles and professional chauffeurs for executive transport and journey management across Nigeria.",
     intro:
-      "Premium vehicles with professional chauffeurs for secure and comfortable movement.",
+      "End-to-end journey management with premium vehicles and professional chauffeurs for secure, comfortable movement.",
     heading: "Our executive fleet",
     text: "Choose from a carefully maintained fleet for VIP movement, corporate travel and group transport. Every vehicle is provided with a professional chauffeur and tailored to your itinerary.",
     items: [
@@ -59,12 +59,12 @@ export const services: readonly Service[] = [
   {
     anchor: "event-security",
     number: "02",
-    title: "Event Security",
+    title: "Events & Corporate Security",
     icon: "shield",
     description:
-      "Professional event security services for VIP events, corporate gatherings, concerts and private functions.",
+      "Professional event and corporate security services for VIP events, corporate gatherings, concerts and private functions.",
     intro:
-      "Professional crowd control, VIP protection and full event risk management.",
+      "Professional crowd control, VIP protection and full event risk management for private and corporate organisations.",
     heading: "Comprehensive event protection",
     text: "Our highly trained personnel keep events safe and running smoothly, from pre-event planning through on-site delivery.",
     items: [
@@ -79,23 +79,22 @@ export const services: readonly Service[] = [
       alt: "Professional event security team",
     },
     action: "Request security coverage",
-    gallery: [
-
-    ],
+    gallery: [],
   },
   {
     anchor: "armed-escort",
     number: "03",
-    title: "Armed Escort",
+    title: "Armed Escort / CPO",
     icon: "escort",
     description:
-      "Secure armed escort services for VIPs, executives and high-value movements across Nigeria.",
+      "Secure armed escort and close protection officer services for VIPs, executives and high-value movements across Nigeria.",
     intro:
       "Maximum protection for sensitive movements and high-risk environments.",
     heading: "High-security escort operations",
-    text: "Our armed escort unit provides tactical protection for individuals, corporate assets and sensitive logistics requiring an enhanced security presence.",
+    text: "Our armed escort and CPO unit provides tactical protection for individuals, corporate assets and sensitive logistics requiring an enhanced security presence.",
     items: [
       "VIP and executive escort",
+      "Close Protection Officers (CPO)",
       "Secure convoy operations",
       "High-value asset protection",
       "Route risk assessment",
@@ -117,18 +116,19 @@ export const services: readonly Service[] = [
   {
     anchor: "airport-support",
     number: "04",
-    title: "Airport Support & Protocol",
+    title: "VIP Airport Protocols",
     icon: "plane",
     description:
-      "VIP airport meet and greet, protocol handling, visa-on-arrival support and logistics assistance in Nigeria.",
+      "VIP airport meet and greet, protocol handling, immigration, e-visa and visa-on-arrival support across Nigeria.",
     intro:
       "A seamless VIP arrival and departure experience with professional coordination.",
     heading: "A stress-free airport experience",
     text: "We coordinate every stage of your arrival or departure so VIPs, executives, delegations and international travellers move smoothly and securely.",
     items: [
       "VIP meet and greet",
+      "Immigration & e-Visa assistance",
       "Visa-on-arrival support",
-      "Immigration and customs assistance",
+      "Customs assistance",
       "Airport transfer coordination",
       "Protocol officers and escort",
     ],
@@ -137,6 +137,30 @@ export const services: readonly Service[] = [
       alt: "VIP airport meet and greet service",
     },
     action: "Request airport support",
+    gallery: [],
+  },
+  {
+    anchor: "consultancy",
+    number: "05",
+    title: "Consultancy / General Supplies",
+    icon: "shield",
+    description:
+      "Security consultancy, risk assessment and general supplies for private and corporate organisations across Nigeria.",
+    intro:
+      "Expert security consultancy and reliable general supplies tailored to private and corporate organisations.",
+    heading: "Consultancy & supplies",
+    text: "We provide professional security consultancy, risk assessments and general supply solutions to help private and corporate organisations operate safely and efficiently.",
+    items: [
+      "Security risk assessment",
+      "Corporate security planning",
+      "Personnel training & deployment",
+      "General supplies & procurement",
+    ],
+    image: {
+      src: "/images/event-security.jpg",
+      alt: "Security consultancy and corporate supplies",
+    },
+    action: "Request consultancy",
     gallery: [],
   },
 ];
@@ -226,13 +250,14 @@ export const galleryImages: readonly Image[] = [
   { src: "/images/Toyota Hiace Bus.jpg", alt: "Toyota Hiace bus" },
 ];
 
-/** The four capabilities shown in the hero and the marquee band. */
+/** The capabilities shown in the hero and the marquee band. */
 export const capabilities: readonly { readonly icon: IconKey; readonly label: string }[] =
   [
-    { icon: "car", label: "Executive Car Rentals" },
-    { icon: "shield", label: "Armed & Event Security" },
-    { icon: "escort", label: "Armed Escort Convoys" },
-    { icon: "plane", label: "VIP Airport Protocol" },
+    { icon: "car", label: "Journey Management / Executive Car Rentals" },
+    { icon: "shield", label: "Events & Corporate Security" },
+    { icon: "escort", label: "Armed Escort / CPO" },
+    { icon: "plane", label: "VIP Airport Protocols" },
+    { icon: "shield", label: "Consultancy / General Supplies" },
   ];
 
 /** Reasons to choose the company, rendered as a tick list. */
@@ -240,7 +265,7 @@ export const advantages: readonly string[] = [
   "24/7 Operations & Support",
   "Highly Trained Security Personnel",
   "Modern & Bulletproof Fleet",
-  "Trusted by VIP & Corporate Clients",
+  "Trusted by VIP & Private/Corporate Clients",
 ];
 
 /** Headline numbers for the count-up band. */
@@ -250,7 +275,7 @@ export const stats: readonly {
   readonly label: string;
 }[] = [
     { value: 24, suffix: "/7", label: "Availability" },
-    { value: 120, suffix: "+", label: "Vehicles & Personnel" },
+    { value: 9, suffix: "+", label: "Years of Experience" },
     { value: 36, suffix: "", label: "States Covered" },
-    { value: 15, suffix: "+", label: "Years of Service" },
+    { value: 0, suffix: "All ranges of executive vehicles + Trained personnel", label: "Fleet & Personnel" },
   ];

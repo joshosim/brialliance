@@ -8,7 +8,7 @@ export function Logo() {
     <a href="/#home" className="logo" aria-label={`${siteName} home`}>
       <ShieldCheck className="logo-mark" aria-hidden="true" />
       <span style={{ fontSize: "1.2rem", lineHeight: "1.2rem" }}>
-        BRILLIANCE INTEGRATED <br /> SERVICES LTD
+        BRILLIANCE INTEGRATED <br /> SERVICES LTD--
       </span>
     </a>
   );
@@ -32,8 +32,7 @@ export function Footer() {
         <div>
           <p className="footer-brand">{siteName}</p>
           <p className="footer-note">
-            Executive transport, security, VIP escort and airport protocol across
-            Nigeria.
+            Elite private and corporate security, transport and logistics solutions across Nigeria.
           </p>
         </div>
         <nav className="footer-links" aria-label="Footer">

@@ -12,7 +12,7 @@ const options: Record<string, string[]> = {
     "Hiace Bus",
     "Coaster Bus",
   ],
-  escort: ["Premium Armed Escort", "Tactical Escort Team", "MOPOL Escort"],
+  escort: ["Premium Armed Escort", "Close Protection Officer (CPO)", "Tactical Escort Team", "MOPOL Escort"],
   security: [
     "VIP Bodyguard",
     "Professional Bouncers",
@@ -23,15 +23,23 @@ const options: Record<string, string[]> = {
     "VIP Meet & Greet",
     "Protocol Officer",
     "Airport Transfer",
-    "Visa-on-Arrival Support",
+    "Immigration Assistance",
+    "E-Visa / Visa-on-Arrival Support",
+  ],
+  consultancy: [
+    "Security Risk Assessment",
+    "Corporate Security Planning",
+    "Personnel Training & Deployment",
+    "General Supplies & Procurement",
   ],
 };
 
 const labels: Record<string, string> = {
-  rental: "Executive car rental",
-  escort: "Armed escort",
-  security: "Event security",
-  airport: "Airport protocol",
+  rental: "Journey Management / Executive Car Rentals",
+  escort: "Armed Escort / CPO",
+  security: "Events & Corporate Security",
+  airport: "VIP Airport Protocols",
+  consultancy: "Consultancy / General Supplies",
 };
 
 export function BookingForm() {
@@ -58,7 +66,7 @@ export function BookingForm() {
   return (
     <form className="booking-form" onSubmit={submit}>
       <p className="eyebrow">Plan your movement</p>
-      <h3>Start a booking</h3>
+      <h3>Start booking</h3>
       <div className="form-grid">
         <label>
           Full name
@@ -135,7 +143,7 @@ export function BookingForm() {
         </label>
       </div>
       <button className="button button-primary" type="submit">
-        Submit booking request <ArrowRight aria-hidden="true" />
+        Submit request <ArrowRight aria-hidden="true" />
       </button>
       {sent && (
         <p className="form-message" role="status">

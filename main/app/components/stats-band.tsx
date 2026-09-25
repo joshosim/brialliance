@@ -8,11 +8,11 @@ const COUNT_DURATION = 1400;
 
 function Stat({ value, suffix, label }: (typeof stats)[number]) {
   const ref = useRef<HTMLSpanElement>(null);
-  // Start at the final value so the server-rendered HTML is already correct;
-  // the count-up only rewinds to zero once the band is actually in view.
   const [display, setDisplay] = useState(value);
+  const isText = value === 0 && suffix.length > 4;
 
   useEffect(() => {
+    if (isText) return;
     const node = ref.current;
     if (!node) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -41,7 +41,18 @@ function Stat({ value, suffix, label }: (typeof stats)[number]) {
       observer.disconnect();
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, [value]);
+  }, [value, isText]);
+
+  if (isText) {
+    return (
+      <div className="stat">
+        <strong ref={ref} style={{ fontSize: "clamp(13px, 1.4vw, 17px)", lineHeight: 1.3 }}>
+          {suffix}
+        </strong>
+        <span>{label}</span>
+      </div>
+    );
+  }
 
   return (
     <div className="stat">

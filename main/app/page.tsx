@@ -38,15 +38,13 @@ export default function Home() {
         <section id="home" className="hero">
           <div className="container hero-grid">
             <div className="hero-content">
-              <p className="eyebrow">Security &amp; logistics across Nigeria</p>
+              <p className="eyebrow">Elite Private and Corporate Security and Transport/Logistics Solutions across Nigeria</p>
               <h1>
                 Elite Security &amp; Logistics{" "}
                 <span className="highlight">Across Nigeria</span>
               </h1>
-              <p>
-                We provide executive transport, armed security, VIP escort, and
-                professional airport protocol services for individuals,
-                corporations, and government clients.
+              <p className="hero-tagline">
+                BISL is your trusted partner for Journey Management / Secured Executive Car Rentals &nbsp;|&nbsp; Armed Escort &nbsp;|&nbsp; Events &amp; Corporate Security &nbsp;|&nbsp; Consultancy &nbsp;|&nbsp; General Supplies services, headquartered in Lagos, Nigeria. We pair practical local expertise with a high standard of presentation and communication. From the first call to final arrival, our team manages the details so you can focus on what matters.
               </p>
               <div className="cta-group">
                 <a className="btn btn-primary" href="/#booking">
@@ -81,7 +79,7 @@ export default function Home() {
               </h2>
               <p>
                 Elite transport, security and logistics solutions tailored for
-                VIPs, corporations and government clients.
+                VIPs and private and corporate organisations.
               </p>
             </div>
             <div className="container">
@@ -190,39 +188,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="gallery" className="page-section gallery-section">
-          <div className="section">
-            <div className="container">
-              <div className="section-head">
-                <p className="eyebrow">Gallery</p>
-                <h2>
-                  Every vehicle and operation,
-                  <br />
-                  <em>gathered in one place.</em>
-                </h2>
-                <p>
-                  A look at the fleet, the personnel and the operations behind
-                  every movement we handle.
-                </p>
-              </div>
-              <div className="gallery-grid">
-                {galleryImages.map((image) => (
-                  <figure className="gallery-item" key={image.src}>
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      width={480}
-                      height={340}
-                      sizes="(max-width: 520px) 100vw, (max-width: 1080px) 50vw, 33vw"
-                    />
-                    <figcaption>{image.alt}</figcaption>
-                  </figure>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section className="page-section why">
           <div className="section">
             <div className="container why-grid">
@@ -238,23 +203,12 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
-              <div className="assurance">
-                <ServiceIcon name="shield" className="assurance-icon" />
-                <h3>Discretion as standard.</h3>
-                <p>
-                  From the first call to final arrival, one team owns the detail:
-                  vetted personnel, maintained vehicles and clear communication
-                  throughout.
-                </p>
-                <a className="text-link" href="/#booking">
-                  Speak to our team <ArrowUpRight aria-hidden="true" />
-                </a>
-              </div>
+
             </div>
           </div>
         </section>
 
-        <section id="about" className="page-section about-section">
+        {/* <section id="about" className="page-section about-section">
           <div className="section">
             <div className="container editorial">
               <div>
@@ -312,13 +266,13 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section id="booking" className="page-section booking-section">
           <div className="section">
             <div className="container section-head">
               <p className="eyebrow">Plan your movement</p>
-              <h2>Start a booking.</h2>
+              <h2>Start booking.</h2>
               <p>
                 Tell us what you need. Our team will respond with a tailored
                 plan.
