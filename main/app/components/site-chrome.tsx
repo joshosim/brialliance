@@ -1,14 +1,13 @@
 import { navLinks } from "../lib/nav";
 import { contact, siteName } from "../lib/site";
-import { Mail, MessageCircle, Phone, ShieldCheck } from "./icons";
+import { Mail, MessageCircle, Phone } from "./icons";
 import { Navigation } from "./navigation";
 
 export function Logo() {
   return (
     <a href="/#home" className="logo" aria-label={`${siteName} home`}>
-      <ShieldCheck className="logo-mark" aria-hidden="true" />
       <span style={{ fontSize: "1.2rem", lineHeight: "1.2rem" }}>
-        BRILLIANCE INTEGRATED <br /> SERVICES LTD--
+        BRILLIANCE INTEGRATED <br /> SERVICES LTD -- RC:7435287
       </span>
     </a>
   );

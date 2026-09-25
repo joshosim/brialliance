@@ -38,8 +38,8 @@
   --accent-glow: rgba(10, 94, 176, 0.28);
   --on-accent: #ffffff;
 
-  --card-shadow: rgba(0, 0, 0, 0.08);
-  --card-shadow-strong: rgba(0, 0, 0, 0.16);
+  --card-shadow: rgba(0, 0, 0, 0.18);
+  --card-shadow-strong: rgba(0, 0, 0, 0.32);
 }
 
 /*
@@ -143,7 +143,7 @@ header.is-scrolled {
   border-bottom-color: var(--border);
 }
 
-header > nav.container {
+header>nav.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -341,7 +341,7 @@ em {
 .eyebrow {
   margin-bottom: 14px;
   color: var(--accent);
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -819,7 +819,7 @@ em {
   direction: rtl;
 }
 
-.service-detail.is-reversed .service-detail-layout > * {
+.service-detail.is-reversed .service-detail-layout>* {
   direction: ltr;
 }
 
@@ -833,7 +833,7 @@ em {
   font-weight: 600;
 }
 
-.service-detail-copy > p {
+.service-detail-copy>p {
   color: var(--muted);
 }
 
@@ -1051,7 +1051,7 @@ em {
   gap: 80px;
 }
 
-.editorial > div:last-child p {
+.editorial>div:last-child p {
   color: var(--muted);
 }
 
@@ -1096,7 +1096,7 @@ em {
   margin: 12px 0 16px;
 }
 
-.booking-layout aside > p {
+.booking-layout aside>p {
   color: var(--muted);
 }
 
@@ -1187,7 +1187,7 @@ em {
   margin-top: 8px;
 }
 
-.booking-form > .button {
+.booking-form>.button {
   margin-top: 26px;
 }
 
@@ -1203,7 +1203,7 @@ em {
   gap: 26px;
 }
 
-.contact-details > div {
+.contact-details>div {
   display: grid;
   gap: 6px;
 }
@@ -1345,6 +1345,17 @@ footer {
   font-size: 14px;
 }
 
+/* -------------------------------------------------- light-mode card elevation */
+
+:root:not([data-theme="dark"]) .feature,
+:root:not([data-theme="dark"]) .detailed-service,
+:root:not([data-theme="dark"]) .fleet-card,
+:root:not([data-theme="dark"]) .gallery-item,
+:root:not([data-theme="dark"]) .booking-form,
+:root:not([data-theme="dark"]) .service-detail-media {
+  box-shadow: 0 4px 16px var(--card-shadow), 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
 /* -------------------------------------------------------------- 404 page */
 
 .not-found {
@@ -1358,6 +1369,7 @@ footer {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
@@ -1378,6 +1390,7 @@ footer {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+
   /* Ease the theme swap rather than cutting between the two palettes. */
   body {
     transition:
@@ -1419,7 +1432,7 @@ footer {
   .detailed-service,
   .fleet-card,
   .gallery-item,
-  .values-grid > div,
+  .values-grid>div,
   .stat {
     transition:
       transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
@@ -1433,7 +1446,7 @@ footer {
   .detailed-service:hover,
   .fleet-card:hover,
   .gallery-item:hover,
-  .values-grid > div:hover {
+  .values-grid>div:hover {
     transform: translateY(-5px);
   }
 
@@ -1512,7 +1525,7 @@ footer {
     width: min(100% - 32px, 620px);
   }
 
-  header > nav.container {
+  header>nav.container {
     min-height: 68px;
   }
 

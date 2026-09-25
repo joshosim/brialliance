@@ -38,13 +38,12 @@ export default function Home() {
         <section id="home" className="hero">
           <div className="container hero-grid">
             <div className="hero-content">
-              <p className="eyebrow">Elite Private and Corporate Security and Transport/Logistics Solutions across Nigeria</p>
               <h1>
                 Elite Security &amp; Logistics{" "}
                 <span className="highlight">Across Nigeria</span>
               </h1>
               <p className="hero-tagline">
-                BISL is your trusted partner for Journey Management / Secured Executive Car Rentals &nbsp;|&nbsp; Armed Escort &nbsp;|&nbsp; Events &amp; Corporate Security &nbsp;|&nbsp; Consultancy &nbsp;|&nbsp; General Supplies services, headquartered in Lagos, Nigeria. We pair practical local expertise with a high standard of presentation and communication. From the first call to final arrival, our team manages the details so you can focus on what matters.
+                BISL is your trusted partner for Journey Management / Secured Executive Car Rentals &nbsp;|&nbsp; Armed Escort &nbsp;|&nbsp; Events &amp; Corporate Security &nbsp;|&nbsp; Consultancy &nbsp;|&nbsp; General Supplies services with 9 years+ of experience, headquartered in Lagos, Nigeria. We pair practical local expertise with a high standard of presentation and communication. From the first call to final arrival, our team manages the details so you can focus on what matters.
               </p>
               <div className="cta-group">
                 <a className="btn btn-primary" href="/#booking">
@@ -368,7 +367,7 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
             >
-              Request a booking <ArrowRight aria-hidden="true" />
+              Request booking <ArrowRight aria-hidden="true" />
             </a>
           </div>
         </section>
