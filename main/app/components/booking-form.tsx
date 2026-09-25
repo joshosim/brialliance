@@ -48,7 +48,8 @@ export function BookingForm() {
 
   function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const data = new FormData(form);
     const serviceList = selected
       .map((s) => `${s}: ${data.get(`item-${s}`) || "Not specified"}`)
       .join("\n");
@@ -60,6 +61,8 @@ export function BookingForm() {
         body: `BOOKING REQUEST\n\nFull Name: ${data.get("name")}\nEmail: ${data.get("email")}\nPhone: ${data.get("phone")}\nMovement date: ${data.get("date")}\nPickup location: ${data.get("location")}\n\nServices:\n${serviceList}\n\nDetails:\n${data.get("details")}`,
       }),
     );
+    form.reset();
+    setSelected([]);
     setSent(true);
   }
 

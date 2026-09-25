@@ -6,7 +6,7 @@ import { Navigation } from "./navigation";
 export function Logo() {
   return (
     <a href="/#home" className="logo" aria-label={`${siteName} home`}>
-      <span style={{ fontSize: "1.2rem", lineHeight: "1.2rem" }}>
+      <span style={{ fontSize: "1.2rem", lineHeight: "1.2rem", padding: "0.9rem 0.3rem", display: "inline-block", }}>
         BRILLIANCE INTEGRATED <br /> SERVICES LTD -- RC:7435287
       </span>
     </a>

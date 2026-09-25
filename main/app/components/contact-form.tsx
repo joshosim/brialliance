@@ -10,7 +10,8 @@ export function ContactForm() {
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const data = new FormData(form);
 
     openMailClient(
       buildMailto({
@@ -19,6 +20,7 @@ export function ContactForm() {
         body: `Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`,
       }),
     );
+    form.reset();
     setSent(true);
   }
 

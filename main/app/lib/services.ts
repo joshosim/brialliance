@@ -52,7 +52,7 @@ export const services: readonly Service[] = [
       "Toyota Hiace and Coaster buses",
       "Professional chauffeurs",
     ],
-    image: { src: "/images/cruser.jpg", alt: "Toyota Prado luxury SUV" },
+    image: { src: "/images/carses.jpeg", alt: "Toyota Prado luxury SUV" },
     action: "Book a vehicle",
     gallery: [],
   },
@@ -75,7 +75,7 @@ export const services: readonly Service[] = [
       "Emergency response planning",
     ],
     image: {
-      src: "/images/event-security.jpg",
+      src: "/images/securityy.jpeg",
       alt: "Professional event security team",
     },
     action: "Request security coverage",
@@ -101,15 +101,19 @@ export const services: readonly Service[] = [
       "MOPOL teams and commanders",
     ],
     image: {
-      src: "/images/Armed-Escort.webp",
+      src: "/images/securityyyy.jpeg",
       alt: "Armed escort security team convoy",
     },
     action: "Request armed escort",
     gallery: [
-      { src: "/images/exsort.jpg", alt: "Security convoy on the road" },
+      { src: "/images/securityyy.jpeg", alt: "Security convoy on the road" },
       {
-        src: "/images/vip-security.webp",
+        src: "/images/securityyyyy.jpeg",
         alt: "Close-protection officers on duty",
+      },
+      {
+        src: "/images/security.jpeg",
+        alt: "Close-protection on duty",
       },
     ],
   },
@@ -157,7 +161,7 @@ export const services: readonly Service[] = [
       "General supplies & procurement",
     ],
     image: {
-      src: "/images/event-security.jpg",
+      src: "/images/cons.jpeg",
       alt: "Security consultancy and corporate supplies",
     },
     action: "Request consultancy",
@@ -205,12 +209,6 @@ export const fleet: readonly Vehicle[] = [
     description: "Executive saloon comfort",
     src: "/images/camry.jpg",
     alt: "Toyota Camry executive saloon",
-  },
-  {
-    name: "Toyota Sienna",
-    description: "Spacious family and corporate travel",
-    src: "/images/Toyota Sienna.jpg",
-    alt: "Toyota Sienna people carrier",
   },
   {
     name: "Coaster Bus",
