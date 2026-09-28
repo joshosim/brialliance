@@ -79,7 +79,12 @@ export const services: readonly Service[] = [
       alt: "Professional event security team",
     },
     action: "Request security coverage",
-    gallery: [],
+    gallery: [
+      { src: "/images/securityyy.jpeg", alt: "Security convoy on the road" },
+      {
+        src: "/images/security.jpeg",
+        alt: "Close-protection officers on duty",
+      },],
   },
   {
     anchor: "armed-escort",
@@ -106,13 +111,16 @@ export const services: readonly Service[] = [
     },
     action: "Request armed escort",
     gallery: [
-      { src: "/images/securityyy.jpeg", alt: "Security convoy on the road" },
       {
         src: "/images/securityyyyy.jpeg",
         alt: "Close-protection officers on duty",
       },
       {
-        src: "/images/security.jpeg",
+        src: "/images/carses.jpeg",
+        alt: "Close-protection on duty",
+      },
+      {
+        src: "/images/security.jpg",
         alt: "Close-protection on duty",
       },
     ],
@@ -120,19 +128,17 @@ export const services: readonly Service[] = [
   {
     anchor: "airport-support",
     number: "04",
-    title: "VIP Airport Protocols",
+    title: "VIP Airport protocols / Immigration and E-Visas",
     icon: "plane",
     description:
-      "VIP airport meet and greet, protocol handling, immigration, e-visa and visa-on-arrival support across Nigeria.",
+      "VIP airport meet and greet/ Airport protocol handling, immigration, e-visa and visa-on-arrival support across Nigeria.",
     intro:
       "A seamless VIP arrival and departure experience with professional coordination.",
     heading: "A stress-free airport experience",
     text: "We coordinate every stage of your arrival or departure so VIPs, executives, delegations and international travellers move smoothly and securely.",
     items: [
-      "VIP meet and greet",
       "Immigration & e-Visa assistance",
       "Visa-on-arrival support",
-      "Customs assistance",
       "Airport transfer coordination",
       "Protocol officers and escort",
     ],

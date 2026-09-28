@@ -43,7 +43,10 @@ export default function Home() {
                 <span className="highlight">Across Nigeria</span>
               </h1>
               <p className="hero-tagline">
-                BISL is your trusted partner for Journey Management / Secured Executive Car Rentals &nbsp;|&nbsp; Armed Escort &nbsp;|&nbsp; Events &amp; Corporate Security &nbsp;|&nbsp; Consultancy &nbsp;|&nbsp; General Supplies services with 9 years+ of experience, headquartered in Lagos, Nigeria. We pair practical local expertise with a high standard of presentation and communication. From the first call to final arrival, our team manages the details so you can focus on what matters.
+                BISL is your trusted partner for Journey Management / Secured Executive Car Rentals &nbsp;|&nbsp; Armed Escort &nbsp;|&nbsp; Events &amp; Corporate Security &nbsp;|&nbsp; Consultancy &nbsp;|&nbsp; General Supplies services with 9 years+ of experience, headquartered in Lagos, Nigeria.
+              </p>
+              <p className="hero-tagline">
+                We pair practical local expertise with a high standard of presentation and communication. From the first call to final arrival, our team manages the details so you can focus on what matters.
               </p>
               <div className="cta-group">
                 <a className="btn btn-primary" href="/#booking">
@@ -207,69 +210,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* <section id="about" className="page-section about-section">
-          <div className="section">
-            <div className="container editorial">
-              <div>
-                <p className="eyebrow">About brilliance</p>
-                <h2>
-                  Movement should feel
-                  <br />
-                  effortless.
-                </h2>
-              </div>
-              <div>
-                <p>
-                  Brilliance Integrated Services Ltd provides premium security,
-                  transport and logistics support to discerning individuals,
-                  corporate organisations and government clients.
-                </p>
-                <p>
-                  We pair practical local expertise with a high standard of
-                  presentation and communication. From the first call to final
-                  arrival, our team manages the details so you can focus on what
-                  matters.
-                </p>
-                <a className="text-link" href="/#contact">
-                  Speak to our team <ArrowUpRight aria-hidden="true" />
-                </a>
-              </div>
-            </div>
-            <div className="container values">
-              <p className="eyebrow">Why clients choose us</p>
-              <div className="values-grid">
-                <div>
-                  <b>01</b>
-                  <h3>Always responsive</h3>
-                  <p>
-                    Round-the-clock operations and clear communication when time
-                    matters.
-                  </p>
-                </div>
-                <div>
-                  <b>02</b>
-                  <h3>Proven personnel</h3>
-                  <p>
-                    Experienced, properly presented teams selected for your
-                    specific brief.
-                  </p>
-                </div>
-                <div>
-                  <b>03</b>
-                  <h3>Modern fleet</h3>
-                  <p>
-                    Reliable, well-maintained vehicles appropriate for every
-                    occasion.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
-
         <section id="booking" className="page-section booking-section">
           <div className="section">
-            <div className="container section-head">
+            <div className="container">
               <p className="eyebrow">Plan your movement</p>
               <h2>Start booking.</h2>
               <p>
@@ -300,7 +243,7 @@ export default function Home() {
 
         <section id="contact" className="page-section contact-section">
           <div className="section">
-            <div className="container section-head">
+            <div className="container">
               <p className="eyebrow">Let&apos;s connect</p>
               <h2>
                 We&apos;re ready
