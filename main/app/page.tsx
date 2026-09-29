@@ -39,7 +39,7 @@ export default function Home() {
           <div className="container hero-grid">
             <div className="hero-content">
               <h2>
-                Elite Secured Ground Transportation, Events Management and Corporate security &amp;{" "}
+                Elite Secured Ground Transportation, Events Management and Corporate security
                 <span className="highlight">Across Nigeria</span>
               </h2>
               <p className="hero-tagline">
